@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediCare Clinic - Quality Healthcare Made Simple</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #2c5aa0, #1e4a8c);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #ffd700;
+        }
+
+        /* Main content spacing */
+        main {
+            margin-top: 80px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 5rem 0;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #ff6b6b;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 4rem 0;
+        }
+
+        .section-heading {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2c5aa0;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .service-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .service-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-item h3 {
+            color: #2c5aa0;
+            margin-bottom: 1rem;
+        }
+
+        /* Doctors Section */
+        .doctors-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .doctor-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .doctor-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .doctor-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .doctor-card div {
+            padding: 1.5rem;
+        }
+
+        .doctor-card h3 {
+            color: #2c5aa0;
+            margin-bottom: 0.5rem;
+        }
+
+        .specialty {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .book-button {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+        .book-button:hover {
+            background: #218838;
+        }
+
+        /* Booking Form */
+        .booking-form {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #2c5aa0;
+        }
+
+        .submit-button {
+            background: #2c5aa0;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: bold;
+            width: 100%;
+            transition: background 0.3s ease;
+        }
+
+        .submit-button:hover {
+            background: #1e4a8c;
+        }
+
+        /* Clinic Section */
+        .clinic-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .clinic-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .clinic-info {
+            padding: 2rem;
+        }
+
+        .clinic-hours {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
+
+        .direction-button {
+            display: block;
+            background: #ff6b6b;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+        .direction-button:hover {
+            background: #ff5252;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c5aa0;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        footer h3 {
+            margin-bottom: 1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .services-grid,
+            .doctors-list {
+                grid-template-columns: 1fr;
+            }
+
+            .booking-form {
+                margin: 0 1rem;
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">MediCare Clinic</div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#doctors">Our Doctors</a></li>
+                    <li><a href="#booking">Book Appointment</a></li>
+                    <li><a href="#clinic">Our Clinic</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="container">
+                <h1>Quality Healthcare Made Simple</h1>
+                <p>Book an appointment with our specialist doctors quickly and easily at our convenient clinic location.</p>
+                <a href="#booking" class="cta-button">Book Now</a>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services">
+            <div class="container">
+                <h2 class="section-heading">Our Services</h2>
+                <div class="services-grid">
+                    <div class="service-item">
+                        <div class="service-icon">❤️</div>
+                        <h3>Cardiology</h3>
+                        <p>Comprehensive heart care including diagnostics, treatment, and preventive care by our expert cardiologists.</p>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon">👶</div>
+                        <h3>Pediatrics</h3>
+                        <p>Specialized healthcare for infants, children, and adolescents with a focus on developmental care.</p>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon">🧠</div>
+                        <h3>Neurology</h3>
+                        <p>Expert diagnosis and treatment of disorders of the nervous system including the brain and spinal cord.</p>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon">🦷</div>
+                        <h3>Dental Care</h3>
+                        <p>Complete dental services including preventive care, cosmetic procedures, and restorative treatments.</p>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon">💊</div>
+                        <h3>Pharmacy</h3>
+                        <p>On-site pharmacy services at our Downtown and Eastside locations with quick prescription filling.</p>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon">🩺</div>
+                        <h3>General Medicine</h3>
+                        <p>Primary care services including regular check-ups, health assessments, and management of chronic conditions.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="doctors">
+            <div class="container">
+                <h2 class="section-heading">Our Specialist Doctors</h2>
+                <div class="doctors-list">
+                    <div class="doctor-card">
+                        <img src="https://via.placeholder.com/400x320/2c5aa0/ffffff?text=Dr.+Sarah+Jones" alt="Dr. Sarah Jones">
+                        <div>
+                            <h3>Dr. Sarah Jones</h3>
+                            <p class="specialty">Cardiologist</p>
+                            <p class="bio">Specializing in heart health with over 15 years of experience.</p>
+                            <button class="book-button" onclick="showBookingForm(1)">Book Appointment</button>
+                        </div>
+                    </div>
+
+                    <div class="doctor-card">
+                        <img src="https://via.placeholder.com/400x320/28a745/ffffff?text=Dr.+David+Park" alt="Dr. David Park">
+                        <div>
+                            <h3>Dr. David Park</h3>
+                            <p class="specialty">Pediatrician</p>
+                            <p class="bio">Expert in child healthcare with a gentle and caring approach.</p>
+                            <button class="book-button" onclick="showBookingForm(2)">Book Appointment</button>
+                        </div>
+                    </div>
+
+                    <div class="doctor-card">
+                        <img src="https://via.placeholder.com/400x320/ff6b6b/ffffff?text=Dr.+Sophia+Lee" alt="Dr. Sophia Lee">
+                        <div>
+                            <h3>Dr. Sophia Lee</h3>
+                            <p class="specialty">Dermatologist</p>
+                            <p class="bio">Skin care specialist with advanced training in medical dermatology.</p>
+                            <button class="book-button" onclick="showBookingForm(3)">Book Appointment</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="booking">
+            <div class="container">
+                <div class="booking-form">
+                    <h2 style="text-align: center; margin-bottom: 1.5rem;">Book Your Appointment</h2>
+                    
+                    <form id="appointment-form">
+                        <div class="form-group">
+                            <label for="doctor">Select Doctor:</label>
+                            <select id="doctor" name="doctor" required>
+                                <option value="">-- Select a Doctor --</option>
+                                <option value="1">Dr. Sarah Jones - Cardiologist</option>
+                                <option value="2">Dr. David Park - Pediatrician</option>
+                                <option value="3">Dr. Sophia Lee - Dermatologist</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="date">Appointment Date:</label>
+                            <input type="date" id="date" name="date" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="time">Appointment Time:</label>
+                            <select id="time" name="time" required>
+                                <option value="">-- Select a Time --</option>
+                                <option value="09:00">09:00 AM</option>
+                                <option value="10:00">10:00 AM</option>
+                                <option value="11:00">11:00 AM</option>
+                                <option value="13:00">01:00 PM</option>
+                                <option value="14:00">02:00 PM</option>
+                                <option value="15:00">03:00 PM</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name">Your Full Name:</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address:</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number:</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="insurance">Insurance Provider (if applicable):</label>
+                            <input type="text" id="insurance" name="insurance">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="visit-reason">Reason for Visit:</label>
+                            <select id="visit-reason" name="visit-reason" required>
+                                <option value="">-- Select Reason --</option>
+                                <option value="consultation">General Consultation</option>
+                                <option value="follow-up">Follow-up Appointment</option>
+                                <option value="check-up">Regular Check-up</option>
+                                <option value="urgent">Urgent Care</option>
+                                <option value="other">Other (Please specify)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="notes">Additional Notes (optional):</label>
+                            <textarea id="notes" name="notes" rows="3"></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-button">Confirm Appointment</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Clinic Information Section -->
+        <section id="clinic">
+            <div class="container">
+                <h2 class="section-heading">Our Clinic Location</h2>
+                <div class="clinic-card" style="max-width: 800px; margin: 0 auto;">
+                    <img src="https://via.placeholder.com/800x300/2c5aa0/ffffff?text=MediCare+Clinic" alt="MediCare Clinic" class="clinic-image">
+                    <div class="clinic-info">
+                        <h3>MediCare Medical Center</h3>
+                        <p><strong>Address:</strong> 123 Main Street, Downtown, City, ZIP</p>
+                        <p><strong>Phone:</strong> (123) 456-7890</p>
+                        <p>Our state-of-the-art facility offers comprehensive medical care with the latest technology and equipment. Our dedicated team of healthcare professionals provides personalized treatment in a comfortable and welcoming environment.</p>
+                        <div class="clinic-hours">
+                            <h4>Opening Hours:</h4>
+                            <p>Monday-Friday: 8:00 AM - 8:00 PM</p>
+                            <p>Saturday: 9:00 AM - 5:00 PM</p>
+                            <p>Sunday: 10:00 AM - 2:00 PM</p>
+                        </div>
+                    </div>
+                    <a href="https://maps.google.com" target="_blank" class="direction-button">Get Directions</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="container">
+            <h3>Contact MediCare Clinic</h3>
+            <p>General Inquiries: info@medicareclinic.com | (123) 456-7890</p>
+            <p>Emergency Contact: emergency@medicareclinic.com | (123) 456-7899</p>
+            <p>For billing questions, please call: (123) 456-7895</p>
+            <p>&copy; 2023 MediCare Clinic. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        console.log('Script starting...');
+        
+        // Set minimum date to today
+        document.getElementById('date').min = new Date().toISOString().split('T')[0];
+        
+        // Check URL for doctor parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const doctorParam = urlParams.get('doctor');
+        if (doctorParam) {
+            document.getElementById('doctor').value = doctorParam;
+        }
+        
+        // Show booking form with doctor pre-selected
+        function showBookingForm(doctorId) {
+            document.getElementById('doctor').value = doctorId;
+            document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Form submission handler
+        document.getElementById('appointment-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Appointment booked successfully! We will contact you shortly to confirm.');
+            this.reset();
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+
+    <!-- Kommunicate Chat Widget -->
+    <script type="text/javascript">
+        (function(d, m){
+            var kommunicateSettings = 
+                {"appId":"3801cf53545b9ca6b0a13990c20f90ebc","popupWidget":true,"automaticChatOpenOnNavigation":true};
+            var s = document.createElement("script"); s.type = "text/javascript"; s.async = true;
+            s.src = "https://widget.kommunicate.io/v2/kommunicate.app";
+            var h = document.getElementsByTagName("head")[0]; h.appendChild(s);
+            window.kommunicate = m; m._globals = kommunicateSettings;
+        })(document, window.kommunicate || {});
+    </script>
+</body>
+</html>
